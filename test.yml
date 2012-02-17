@@ -1,0 +1,11 @@
+---
+min_price: 800
+max_price: 1500
+rooms: 2
+cat: false
+dog: false
+gmail_username: testerdbc@gmail.com
+password: mvclover
+subject: "Your listing on Craigslist"
+email_message: "Hi"
+craigslist_url: http://sfbay.craigslist.org/apa/
