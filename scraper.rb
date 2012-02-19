@@ -5,27 +5,34 @@ require 'mail'
 require 'nokogiri'
 
 class Scraper
-  def initialize source_file="test.yml"
-    yaml_params = Input.new(source_file).yaml_file
-    craigslist_urls = Parse.new(yaml_params['craigslist_url']).email_list
-    Email.new(yaml_params['gmail_username'], yaml_params['password'], craigslist_urls)
+  def initialize user_parameters_file_location="test.yml"
+    user_parameters = Input.new(user_parameters_file_location).user_parameters
+    craigslist_urls = Parse.new(user_parameters['craigslist_url']).email_list
+    Email.new(user_parameters['gmail_username'], user_parameters['password'], craigslist_urls)
   end
 end
-
-
 
 class Input
-  attr_reader :yaml_file
+  attr_reader :user_parameters
   
   def initialize source
-    parse_yaml source
+    parse_yaml_file source if is_yaml_file? source
   end
   
-  def parse_yaml yaml_location
-    @yaml_file = YAML.load_file(yaml_location)
+  def parse_yaml_file yaml_location
+    @user_parameters = YAML.load_file(yaml_location)
+  end
+
+  private
+  
+  def is_yaml_file? source
+    source.downcase.match(".yml")
   end
 
 end
+
+
+
 
 class Parse
   attr_reader :email_list
@@ -71,10 +78,7 @@ class Parse
     
   end
 end
-# 
-# parse = Parse.new("http://sfbay.craigslist.org/apa/")
-# parse.get_url_list
-# puts parse.parse_page.inspect
+
 
 class Email
   def initialize username, password, email_list
@@ -136,6 +140,8 @@ class Email
 end
 
 Scraper.new("test.yml")
+
+
  #emailobj = Email.new('testerdbc@gmail.com', "mvclover", [["rogergraves@gmail.com", "4400", "http://craigslist.org"]])
 # emailobj.send_email("Test email", "This is the message", "rogergraves@gmail.com")
 

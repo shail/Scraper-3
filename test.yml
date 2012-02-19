@@ -6,6 +6,6 @@ cat: false
 dog: false
 gmail_username: testerdbc@gmail.com
 password: mvclover
-subject: "Your listing on Craigslist"
-email_message: "Hi"
+subject: "Your #address listing on Craigslist"
+email_message: "I noticed your apartment listing on Craigslist at #address for #cost. It looks really cool and I'd love to talk to you about it. Can you give me a call if it's still available? Ny number is 415-555-4444. I hope it's OK if I have 10 cats and like to shoot guns."
 craigslist_url: http://sfbay.craigslist.org/apa/
