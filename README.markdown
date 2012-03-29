@@ -1,0 +1,35 @@
+Worked on this project with Roger Graves from Devbootcamp. This was our first significant project in the class. Scraped Craigslist for a particular search criteria and e-mailed the poster.
+
+
+CLASS OUTLINE
+
+Scraper class
+ - What it is receiving: Will be initialized by user/other script, source location
+ - Instantiate and call input class with source
+ - Instantiate and call parse class with hash of parameters
+ - Instantiate and call email class with hash of parameters
+ - Print log summary from Email class
+ 
+Parse class
+ - It will get the Craigslist search URL
+ - Make a list of individual listings (links) and their variables
+ - Will return an array of hashes: hash -> url, price, variables (city, address, pets, etc.)
+
+
+Email class
+ - Instantiate with basic SMTP info: username, password
+ - What it is receiving: message, subject, recipient email address, variables (POSSIBLY LATER) 
+ - What is it doing with what it receives:
+	- Check log for duplication (will have to check for duplication through price, title, etc.)
+ 	- Assemble email message
+		- Add any formatting parameters
+		- Insert variables (POSSIBLY LATER)
+	- Send email
+	- Log (summary or full optionality) sent
+
+Input class
+ - Take input (tested)
+ - Format output into a hash (tested) 
+ - Sends output to Scraper class
+ - Initial YAML class
+ - Other possible input file (POSSIBLY LATER)
